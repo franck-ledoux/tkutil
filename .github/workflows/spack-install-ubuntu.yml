@@ -26,7 +26,7 @@ jobs:
 
     - name: Initialize the dev environment
       shell: bash
-      run : >
+      run : |
         git clone --depth=1 -b releases/latest https://github.com/spack/spack.git
         sed -i 's#"${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}"#"${PACKAGE}"#g' spack/etc/spack/defaults/config.yaml
         . ./spack/share/spack/setup-env.sh
@@ -42,6 +42,6 @@ jobs:
     - name: Build and install
       shell: bash
       working-directory: ${{github.workspace}}
-      run: >
-        . ./spack/share/spack/setup-env.sh
+      run: |
+        . ./spack/share/spack/setup-env.sh 
         spack install tkutil
