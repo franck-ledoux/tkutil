@@ -36,13 +36,10 @@ jobs:
         spack repo add ./spack_recipes_meshing/supersede_repo
   
         spack external find cmake
-        spack install lcov
-        spack install swig
 
     - name: Build and install
       shell: bash
       working-directory: ${{github.workspace}}
       run: |
         . ./spack/share/spack/setup-env.sh 
-        spack clean -m
-        spack install tkutil
+        spack install tkutil@main
