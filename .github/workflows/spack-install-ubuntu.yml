@@ -48,8 +48,6 @@ jobs:
       run: |
         source /spack/share/spack/setup-env.sh
         spack load cmake
-        cmake -E make_directory ${{github.workspace}}/test_link
-        cd ${{github.workspace}}/test_link/
         spack load tkutil
         cmake -S ${{github.workspace}}/test_link -B build_exe
         cmake --build build_exe
