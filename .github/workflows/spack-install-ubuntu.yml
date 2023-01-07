@@ -33,8 +33,7 @@ jobs:
         git clone --depth=1 https://github.com/LIHPC-Computational-Geometry/spack_recipes_meshing.git
         spack repo add ./spack_recipes_meshing/meshing_repo
         spack repo add ./spack_recipes_meshing/supersede_repo
-        spack external find cmake
-
+        
     - name: Build and install
       shell: bash
       working-directory: ${{github.workspace}}
@@ -47,6 +46,7 @@ jobs:
       working-directory: ${{github.workspace}}
       run: |
         source /spack/share/spack/setup-env.sh
+        spack load cmake
         cmake -E make_directory ${{github.workspace}}/test_link
         cd ${{github.workspace}}/test_link/
         spack load tkutil
