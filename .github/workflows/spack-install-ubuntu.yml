@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ main ]
 
-jobs:https://github.com/franck-ledoux/tkutil/projects
+jobs: 
   init:
     name: ${{ matrix.config }}
     # The CMake configure and build commands are platform agnostic and should work equally
