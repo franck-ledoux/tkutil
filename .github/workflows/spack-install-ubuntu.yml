@@ -36,7 +36,6 @@ jobs:
         
     - name: Build and install
       shell: bash
-      working-directory: ${{github.workspace}}
       run: |
         source /spack/share/spack/setup-env.sh 
         spack load cmake
@@ -44,12 +43,15 @@ jobs:
         
     - name: Test lib install
       shell: bash
-      working-directory: ${{github.workspace}}
       run: |
         source /spack/share/spack/setup-env.sh
         spack load cmake
         spack load tkutil
+        ls
+        cmake -E make_directory ${{github.workspace}}/test_link
+        cd ${{github.workspace}}/test_link/
         cmake -S ${{github.workspace}}/test_link -B build_exe
         cmake --build build_exe
         cd build_exe
-        ctest
+        ctest        
+
