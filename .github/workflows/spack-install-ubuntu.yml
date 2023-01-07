@@ -39,5 +39,5 @@ jobs:
       shell: bash
       working-directory: ${{github.workspace}}
       run: |
-        source ./spack/share/spack/setup-env.sh 
+        source /spack/share/spack/setup-env.sh 
         spack install tkutil@main
