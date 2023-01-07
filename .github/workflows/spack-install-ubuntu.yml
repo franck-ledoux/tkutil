@@ -29,19 +29,15 @@ jobs:
     - name: Initialize the dev environment
       shell: bash
       run : |
-        git clone --depth=1 -b releases/latest https://github.com/spack/spack.git
-        sed -i 's#"${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}"#"${PACKAGE}"#g' spack/etc/spack/defaults/config.yaml
-        . ./spack/share/spack/setup-env.sh
+        source /spack/share/spack/setup-env.sh
         git clone --depth=1 https://github.com/LIHPC-Computational-Geometry/spack_recipes_meshing.git
-  
         spack repo add ./spack_recipes_meshing/meshing_repo
         spack repo add ./spack_recipes_meshing/supersede_repo
-  
         spack external find cmake
 
     - name: Build and install
       shell: bash
       working-directory: ${{github.workspace}}
       run: |
-        . ./spack/share/spack/setup-env.sh 
+        source ./spack/share/spack/setup-env.sh 
         spack install tkutil@main
