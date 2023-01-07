@@ -47,9 +47,7 @@ jobs:
         source /spack/share/spack/setup-env.sh
         spack load cmake
         spack load tkutil
-        ls
         cd test_link/
-        ls
         cmake -S . -B build_exe
         cmake --build build_exe
         cd build_exe
